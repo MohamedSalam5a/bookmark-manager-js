@@ -28,6 +28,7 @@ A simple and interactive Bookmark Manager web app that allows users to save, vis
 ---
 
  📂 Project Structure
+ 
  bookmark-manager-js/
 │
 ├── css/
