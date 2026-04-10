@@ -1,123 +1,88 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Link to Font Awesome icons library -->
-    <link rel="stylesheet" href="css/all.min.css" />
-    <!-- Link to Bootstrap CSS for styling -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Link to CSS for styling -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- favicon -->
-    <link rel="shortcut icon" href="images/bookmark.png" type="image/x-icon" />
-    <title>Bookmarker.js</title>
-  </head>
-  <body>
-    <header>
-      <div class="container py-5">
-        <h1 class="display-5 mx-auto fw-medium py-2 position-relative">
-          Bookmarker
-        </h1>
-      </div>
-    </header>
 
-    <main>
-      <section class="bookFavorite">
-        <div class="container py-4">
-          <h2 class="text-center h4 mb-4">
-            <i class="fa-solid fa-bookmark"></i>Bookmark your favorite sites<i
-              class="fa-solid fa-bookmark"
-            ></i>
-          </h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Link to Font Awesome icons library -->
+  <link rel="stylesheet" href="css/all.min.css" />
+  <!-- Link to Bootstrap CSS for styling -->
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <!-- Link to CSS for styling -->
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- favicon -->
+  <link rel="shortcut icon" href="images/bookmark.png" type="image/x-icon" />
+  <title>Bookmarker</title>
+</head>
 
-          <div class="formBook">
-            <div class="form mt-3">
-              <div class="mb-3">
-                <label for="bookmarkName" class="form-label fw-semibold">
-                  <i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label
-                >
-                <input
-                  oninput="ValidationName()"
-                  type="text"
-                  class="form-control"
-                  id="bookmarkName"
-                  name="bookmarkName"
-                  placeholder="Bookmark Name"
-                />
-              </div>
-              <p id="msgName" class="fs-18 alert alert-danger">
-                Site name must contain at least 3 characters
-              </p>
+<body>
+  <header>
+    <div class="container py-5">
+      <h1 class="display-5 mx-auto fw-medium py-2 position-relative">
+        Bookmarker
+      </h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="bookFavorite">
+      <div class="container py-4">
+        <h2 class="text-center h4 mb-4">
+          <i class="fa-solid fa-bookmark"></i>Bookmark your favorite sites<i class="fa-solid fa-bookmark"></i>
+        </h2>
+
+        <div class="formBook">
+          <div class="form mt-3">
+            <div class="mb-3">
+              <label for="bookmarkName" class="form-label fw-semibold">
+                <i class="fa-solid fa-book-bookmark me-2"></i>Site Name</label>
+              <input oninput="ValidationInput(this ,'msgName' )" type="text" autocomplete="off" class="form-control"
+                id="bookmarkName" name="bookmarkName" placeholder="Bookmark Name" />
             </div>
-
-            <div class="form mt-4">
-              <div class="mb-3">
-                <label for="siteUrl" class="form-label fw-semibold">
-                  <i class="fa-solid fa-link me-2"></i>Site URL</label
-                >
-                <input
-                 oninput="ValidationUrl()"
-                  type="url"
-                  class="form-control"
-                  id="siteUrl"
-                  placeholder="Website URL"
-                />
-              </div>
-              <p id="msgurl" class="fs-18 mb-0 alert alert-danger">Site URL must be a valid one</p>
-            </div>
-
-            <div class="text-center mt-4">
-              <button
-                onclick="addBookmark()"
-                type="button"
-                class="btn btn-submit"
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="bookMark py-4">
-        <div class="container">
-          <table class="table table-light text-center text-capitalize">
-            <thead>
-              <tr>
-                <th>index</th>
-                <th>website name</th>
-                <th>visit</th>
-                <th>delete</th>
-              </tr>
-            </thead>
-            <tbody id="dataBookMark"></tbody>
-          </table>
-        </div>
-      </section>
-
-      <div
-        class="light-container d-none w-100 vh-100 position-absolute top-0 start-0 d-flex justify-content-center align-items-center"
-      >
-        <div class="box-model bg-light w-500 p-4 rounded-3">
-          <div class="circles d-flex justify-content-between mb-4">
-            <div>
-              <span class="circle"></span>
-              <span class="circle"></span>
-              <span class="circle"></span>
-            </div>
-            <i id="close" class="fa-solid fa-xmark fs-4 cursor-pointer"></i>
+            <p id="msgName" class="fs-30 alert alert-danger d-none">
+              Site name must contain at least 3 characters
+            </p>
           </div>
 
-          <div class="rule pt-1">
-            >
-            <p class="fs-18 mb-0">Site URL must be a valid one</p>
+          <div class="form mt-4">
+            <div class="mb-3">
+              <label for="siteUrl" class="form-label fw-semibold">
+                <i class="fa-solid fa-link me-2"></i>Site URL</label>
+              <input oninput="ValidationInput(this ,'msgurl')" type="url" autocomplete="off" class="form-control"
+                id="siteUrl" placeholder="Website URL" />
+            </div>
+            <p id="msgurl" class="fs-30 mb-0 alert alert-danger d-none">
+              Site URL must be a valid one
+            </p>
+          </div>
+
+          <div class="text-center mt-4">
+            <button onclick="addBookmark()" type="button" class="btn btn-submit">
+              Submit
+            </button>
           </div>
         </div>
       </div>
-    </main>
+    </section>
 
-    <!-- JS -->
-    <script src="js/index.js"></script>
-  </body>
+    <section class="bookMark py-4">
+      <div class="container">
+        <table class="table table-light text-center text-capitalize">
+          <thead>
+            <tr>
+              <th>index</th>
+              <th>website name</th>
+              <th>visit</th>
+              <th>delete</th>
+            </tr>
+          </thead>
+          <tbody id="dataBookMark"></tbody>
+        </table>
+      </div>
+    </section>
+
+  <!-- JS -->
+  <script src="js/index.js"></script>
+</body>
+
 </html>
